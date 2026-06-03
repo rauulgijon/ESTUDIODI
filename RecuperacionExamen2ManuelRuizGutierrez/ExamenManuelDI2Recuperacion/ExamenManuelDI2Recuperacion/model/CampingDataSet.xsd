@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="CampingDataSet" targetNamespace="http://tempuri.org/CampingDataSet.xsd" xmlns:mstns="http://tempuri.org/CampingDataSet.xsd" xmlns="http://tempuri.org/CampingDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="CampingDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="CampingDataSet" msprop:Generator_DataSetName="CampingDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ReporteReservasMes" msprop:Generator_RowEvHandlerName="ReporteReservasMesRowChangeEventHandler" msprop:Generator_RowDeletedName="ReporteReservasMesRowDeleted" msprop:Generator_RowDeletingName="ReporteReservasMesRowDeleting" msprop:Generator_RowEvArgName="ReporteReservasMesRowChangeEvent" msprop:Generator_TablePropName="ReporteReservasMes" msprop:Generator_RowChangedName="ReporteReservasMesRowChanged" msprop:Generator_RowChangingName="ReporteReservasMesRowChanging" msprop:Generator_TableClassName="ReporteReservasMesDataTable" msprop:Generator_RowClassName="ReporteReservasMesRow" msprop:Generator_TableVarName="tableReporteReservasMes" msprop:Generator_UserTableName="ReporteReservasMes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="GuestName" msprop:Generator_ColumnPropNameInRow="GuestName" msprop:Generator_ColumnPropNameInTable="GuestNameColumn" msprop:Generator_ColumnVarNameInTable="columnGuestName" msprop:Generator_UserColumnName="GuestName" type="xs:string" minOccurs="0" />
+              <xs:element name="LicensePlate" msprop:Generator_ColumnPropNameInRow="LicensePlate" msprop:Generator_ColumnPropNameInTable="LicensePlateColumn" msprop:Generator_ColumnVarNameInTable="columnLicensePlate" msprop:Generator_UserColumnName="LicensePlate" type="xs:string" minOccurs="0" />
+              <xs:element name="VehicleType" msprop:Generator_ColumnPropNameInRow="VehicleType" msprop:Generator_ColumnPropNameInTable="VehicleTypeColumn" msprop:Generator_ColumnVarNameInTable="columnVehicleType" msprop:Generator_UserColumnName="VehicleType" type="xs:string" minOccurs="0" />
+              <xs:element name="ParcelId" msprop:Generator_ColumnPropNameInRow="ParcelId" msprop:Generator_ColumnPropNameInTable="ParcelIdColumn" msprop:Generator_ColumnVarNameInTable="columnParcelId" msprop:Generator_UserColumnName="ParcelId" type="xs:string" minOccurs="0" />
+              <xs:element name="CheckInDate" msprop:Generator_ColumnPropNameInRow="CheckInDate" msprop:Generator_ColumnPropNameInTable="CheckInDateColumn" msprop:Generator_ColumnVarNameInTable="columnCheckInDate" msprop:Generator_UserColumnName="CheckInDate" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ReporteFinanciero" msprop:Generator_RowEvHandlerName="ReporteFinancieroRowChangeEventHandler" msprop:Generator_RowDeletedName="ReporteFinancieroRowDeleted" msprop:Generator_RowDeletingName="ReporteFinancieroRowDeleting" msprop:Generator_RowEvArgName="ReporteFinancieroRowChangeEvent" msprop:Generator_TablePropName="ReporteFinanciero" msprop:Generator_RowChangedName="ReporteFinancieroRowChanged" msprop:Generator_RowChangingName="ReporteFinancieroRowChanging" msprop:Generator_TableClassName="ReporteFinancieroDataTable" msprop:Generator_RowClassName="ReporteFinancieroRow" msprop:Generator_TableVarName="tableReporteFinanciero" msprop:Generator_UserTableName="ReporteFinanciero">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CheckInDate" msprop:Generator_ColumnPropNameInRow="CheckInDate" msprop:Generator_ColumnPropNameInTable="CheckInDateColumn" msprop:Generator_ColumnVarNameInTable="columnCheckInDate" msprop:Generator_UserColumnName="CheckInDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TotalCost" msprop:Generator_ColumnPropNameInRow="TotalCost" msprop:Generator_ColumnPropNameInTable="TotalCostColumn" msprop:Generator_ColumnVarNameInTable="columnTotalCost" msprop:Generator_UserColumnName="TotalCost" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

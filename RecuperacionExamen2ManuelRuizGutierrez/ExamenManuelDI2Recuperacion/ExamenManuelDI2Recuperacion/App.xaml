@@ -1,0 +1,9 @@
+﻿<Application x:Class="ExamenManuelDI2Recuperacion.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ExamenManuelDI2Recuperacion"
+             StartupUri="view/MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
