@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="CampingDataSet" targetNamespace="http://tempuri.org/CampingDataSet.xsd" xmlns:mstns="http://tempuri.org/CampingDataSet.xsd" xmlns="http://tempuri.org/CampingDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="CampingDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="CampingDataSet" msprop:Generator_DataSetName="CampingDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ReportereservasMes" msprop:Generator_RowEvHandlerName="ReportereservasMesRowChangeEventHandler" msprop:Generator_RowDeletedName="ReportereservasMesRowDeleted" msprop:Generator_RowDeletingName="ReportereservasMesRowDeleting" msprop:Generator_RowEvArgName="ReportereservasMesRowChangeEvent" msprop:Generator_TablePropName="ReportereservasMes" msprop:Generator_RowChangedName="ReportereservasMesRowChanged" msprop:Generator_RowChangingName="ReportereservasMesRowChanging" msprop:Generator_TableClassName="ReportereservasMesDataTable" msprop:Generator_RowClassName="ReportereservasMesRow" msprop:Generator_TableVarName="tableReportereservasMes" msprop:Generator_UserTableName="ReportereservasMes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nombreHuesped" msprop:Generator_ColumnPropNameInRow="nombreHuesped" msprop:Generator_ColumnPropNameInTable="nombreHuespedColumn" msprop:Generator_ColumnVarNameInTable="columnnombreHuesped" msprop:Generator_UserColumnName="nombreHuesped" type="xs:string" minOccurs="0" />
+              <xs:element name="matricula" msprop:Generator_ColumnPropNameInRow="matricula" msprop:Generator_ColumnPropNameInTable="matriculaColumn" msprop:Generator_ColumnVarNameInTable="columnmatricula" msprop:Generator_UserColumnName="matricula" type="xs:string" minOccurs="0" />
+              <xs:element name="tipoVehiculo" msprop:Generator_ColumnPropNameInRow="tipoVehiculo" msprop:Generator_ColumnPropNameInTable="tipoVehiculoColumn" msprop:Generator_ColumnVarNameInTable="columntipoVehiculo" msprop:Generator_UserColumnName="tipoVehiculo" type="xs:string" minOccurs="0" />
+              <xs:element name="idParcela" msprop:Generator_ColumnPropNameInRow="idParcela" msprop:Generator_ColumnPropNameInTable="idParcelaColumn" msprop:Generator_ColumnVarNameInTable="columnidParcela" msprop:Generator_UserColumnName="idParcela" type="xs:string" minOccurs="0" />
+              <xs:element name="fechaEntrada" msprop:Generator_ColumnPropNameInRow="fechaEntrada" msprop:Generator_ColumnPropNameInTable="fechaEntradaColumn" msprop:Generator_ColumnVarNameInTable="columnfechaEntrada" msprop:Generator_UserColumnName="fechaEntrada" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ReporteFinanciero" msprop:Generator_RowEvHandlerName="ReporteFinancieroRowChangeEventHandler" msprop:Generator_RowDeletedName="ReporteFinancieroRowDeleted" msprop:Generator_RowDeletingName="ReporteFinancieroRowDeleting" msprop:Generator_RowEvArgName="ReporteFinancieroRowChangeEvent" msprop:Generator_TablePropName="ReporteFinanciero" msprop:Generator_RowChangedName="ReporteFinancieroRowChanged" msprop:Generator_RowChangingName="ReporteFinancieroRowChanging" msprop:Generator_TableClassName="ReporteFinancieroDataTable" msprop:Generator_RowClassName="ReporteFinancieroRow" msprop:Generator_TableVarName="tableReporteFinanciero" msprop:Generator_UserTableName="ReporteFinanciero">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="fechaEntrada" msprop:Generator_ColumnPropNameInRow="fechaEntrada" msprop:Generator_ColumnPropNameInTable="fechaEntradaColumn" msprop:Generator_ColumnVarNameInTable="columnfechaEntrada" msprop:Generator_UserColumnName="fechaEntrada" type="xs:string" minOccurs="0" />
+              <xs:element name="costeTotal" msprop:Generator_ColumnPropNameInRow="costeTotal" msprop:Generator_ColumnPropNameInTable="costeTotalColumn" msprop:Generator_ColumnVarNameInTable="columncosteTotal" msprop:Generator_UserColumnName="costeTotal" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
