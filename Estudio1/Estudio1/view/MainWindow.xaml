@@ -1,0 +1,214 @@
+﻿<Window x:Class="Estudio1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Estudio1"
+        mc:Ignorable="d"
+        Title="Sistema de Gestión de Reservas" Height="1000" Width="1800" Loaded="Window_Loaded">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Gestión">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.2*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" FontSize="16" FontWeight="Bold">Huéspedes</Label>
+                    <DataGrid Grid.RowSpan="3" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Margin="5" x:Name="dgGuests" AutoGenerateColumns="False" SelectionChanged="dgGuests_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding idHuesped}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}" Width="*"/>
+                            <DataGridTextColumn Header="DNI/Pasaporte" Binding="{Binding dniPasaporte}" Width="*"/>
+                            <DataGridTextColumn Header="Teléfono" Binding="{Binding telefono}" Width="*"/>
+                            <DataGridTextColumn Header="ID Vehículo" Binding="{Binding idTipoVehiculo}" Width="*"/>
+                            <DataGridTextColumn Header="Matrícula" Binding="{Binding matricula}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Label Grid.Row="0" Grid.Column="2" FontSize="16" FontWeight="Bold">Parcelas</Label>
+                    <DataGrid Grid.RowSpan="3" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="2" Margin="5" x:Name="dgParcels" AutoGenerateColumns="False" SelectionChanged="dgParcels_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding idParcela}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Tamaño" Binding="{Binding tamanoParcela}" Width="*"/>
+                            <DataGridTextColumn Header="Luz" Binding="{Binding luz}" Width="*"/>
+                            <DataGridTextColumn Header="Agua" Binding="{Binding agua}" Width="*"/>
+                            <DataGridTextColumn Header="Precio/Noche" Binding="{Binding precioNoche}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Label Grid.Row="0" Grid.Column="4" FontSize="16" FontWeight="Bold">Reservas</Label>
+                    <DataGrid Grid.RowSpan="3" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="4" Margin="5" x:Name="dgReservations" AutoGenerateColumns="False" SelectionChanged="dgReservations_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding idReserva}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="ID Huésped" Binding="{Binding idHuesped}" Width="*"/>
+                            <DataGridTextColumn Header="ID Parcela" Binding="{Binding idParcela}" Width="*"/>
+                            <DataGridTextColumn Header="Entrada" Binding="{Binding fechaEntrada}" Width="*"/>
+                            <DataGridTextColumn Header="Salida" Binding="{Binding fechaSalida}" Width="*"/>
+                            <DataGridTextColumn Header="Total" Binding="{Binding costeTotal}" Width="*"/>
+                            <DataGridTextColumn Header="Estado" Binding="{Binding estado}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Label Grid.Row="0" Grid.Column="6" FontSize="16" FontWeight="Bold">Tipos de Vehículo</Label>
+                    <DataGrid Margin="5" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="2" Grid.Column="6" x:Name="dgVehicleTypes" AutoGenerateColumns="False" SelectionChanged="dgVehicleTypes_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding idTipoVehiculo}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Tipo" Binding="{Binding tipoVehiculoNombre}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Border Margin="5" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="3" BorderThickness="2" BorderBrush="HotPink">
+                        <StackPanel Margin="10">
+                            <Label FontSize="14" FontWeight="Bold" Foreground="HotPink">Gestión de Huéspedes</Label>
+                            <Label FontSize="12">ID</Label>
+                            <TextBox x:Name="txtGuestId" IsReadOnly="True" Background="#EEE"/>
+                            <Label FontSize="12">Nombre</Label>
+                            <TextBox x:Name="txtGuestName"/>
+                            <Label FontSize="12">DNI / Pasaporte</Label>
+                            <TextBox x:Name="txtGuestPassport"/>
+                            <Label FontSize="12">Teléfono</Label>
+                            <TextBox x:Name="txtGuestTelephone"/>
+                            <Label FontSize="12">ID Vehículo</Label>
+                            <TextBox x:Name="txtGuestVehicleId"/>
+                            <Label FontSize="12">Matrícula</Label>
+                            <TextBox x:Name="txtGuestLicensePlate"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                <Button Margin="5" Padding="10" Click="btnGuestAdd_Click">Añadir</Button>
+                                <Button Margin="5" Padding="10" Click="btnGuestUpdate_Click">Actualizar</Button>
+                                <Button Margin="5" Padding="10" Click="btnGuestDelete_Click">Borrar</Button>
+                                <Button Margin="5" Padding="10" Click="btnGuestClear_Click">Limpiar</Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Margin="5" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="3" BorderThickness="2" BorderBrush="Cyan">
+                        <StackPanel Margin="10">
+                            <Label FontSize="14" FontWeight="Bold" Foreground="DarkCyan">Gestión de Parcelas</Label>
+                            <Label FontSize="12">ID</Label>
+                            <TextBox x:Name="txtParcelId" IsReadOnly="True" Background="#EEE"/>
+                            <Label FontSize="12">Tamaño (ej. Pequeña, Grande)</Label>
+                            <TextBox x:Name="txtParcelSize"/>
+                            <Label FontSize="12">Precio por Noche</Label>
+                            <TextBox x:Name="txtParcelCol"/>
+                            <CheckBox x:Name="chkParcelLight" Margin="0,10,0,5">Tiene Luz</CheckBox>
+                            <CheckBox x:Name="chkParcelWater" Margin="0,5,0,10">Tiene Agua</CheckBox>
+                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                <Button Margin="5" Padding="10" Click="btnParcelAdd_Click">Añadir</Button>
+                                <Button Margin="5" Padding="10" Click="btnParcelUpdate_Click">Actualizar</Button>
+                                <Button Margin="5" Padding="10" Click="btnParcelDelete_Click">Borrar</Button>
+                                <Button Margin="5" Padding="10" Click="btnParcelClear_Click">Limpiar</Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Margin="5" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="3" BorderThickness="2" BorderBrush="Red">
+                        <StackPanel Margin="10">
+                            <Label FontSize="14" FontWeight="Bold" Foreground="Red">Gestión de Reservas</Label>
+                            <Label FontSize="12">ID</Label>
+                            <TextBox x:Name="txtResId" IsReadOnly="True" Background="#EEE"/>
+                            <Label FontSize="12">ID Huésped</Label>
+                            <TextBox x:Name="txtResGuestId"/>
+                            <Label FontSize="12">ID Parcela</Label>
+                            <TextBox x:Name="txtResParcelId"/>
+                            <Label FontSize="12">Fecha de Entrada</Label>
+                            <DatePicker x:Name="dpResCheckIn" SelectedDateFormat="Short"/>
+                            <Label FontSize="12">Fecha de Salida</Label>
+                            <DatePicker x:Name="dpResCheckOut" SelectedDateFormat="Short"/>
+                            <Label FontSize="12">Coste Total</Label>
+                            <TextBox x:Name="txtResTotalCost"/>
+                            <Label FontSize="12">Estado</Label>
+                            <TextBox x:Name="txtResStatus"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                <Button Margin="5" Padding="10" Click="btnResAdd_Click">Añadir</Button>
+                                <Button Margin="5" Padding="10" Click="btnResUpdate_Click">Actualizar</Button>
+                                <Button Margin="5" Padding="10" Click="btnResDelete_Click">Borrar</Button>
+                                <Button Margin="5" Padding="10" Click="btnResClear_Click">Limpiar</Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Margin="5" Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2" Grid.RowSpan="3" BorderThickness="2" BorderBrush="Orange">
+                        <StackPanel Margin="10">
+                            <Label FontSize="14" FontWeight="Bold" Foreground="Orange">Tipos de Vehículos</Label>
+                            <Label FontSize="12">ID</Label>
+                            <TextBox x:Name="txtVehId" IsReadOnly="True" Background="#EEE"/>
+                            <Label FontSize="12">Tipo de Vehículo</Label>
+                            <TextBox x:Name="txtVehType"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                <Button Margin="5" Padding="10" Click="btnVehAdd_Click">Añadir</Button>
+                                <Button Margin="5" Padding="10" Click="btnVehUpdate_Click">Actualizar</Button>
+                                <Button Margin="5" Padding="10" Click="btnVehDelete_Click">Borrar</Button>
+                                <Button Margin="5" Padding="10" Click="btnVehClear_Click">Limpiar</Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Informes" xmlns:cr="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer">
+                <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="49.119"/>
+                        <ColumnDefinition Width="150.881"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" BorderThickness="2" BorderBrush="Gray" Margin="5,5,5,5" Grid.ColumnSpan="2">
+                        <StackPanel Margin="10">
+                            <Label FontSize="14" FontWeight="Bold">Seleccionar Informe</Label>
+                            <Separator Margin="0,5"/>
+
+                            <Label FontSize="12" FontWeight="Bold">Tipo de Informe:</Label>
+
+                            <RadioButton x:Name="rbReservasMes" Margin="5" IsChecked="True">
+                                <TextBlock FontSize="11">1. Reservas por mes</TextBlock>
+                            </RadioButton>
+                            <TextBlock FontSize="10" Foreground="Gray" Margin="25,0,5,10">Reservas para cada mes</TextBlock>
+
+                            <RadioButton x:Name="rbReporteFinanciero" Margin="5">
+                                <TextBlock FontSize="11">2. Informe Financiero</TextBlock>
+                            </RadioButton>
+                            <TextBlock FontSize="10" Foreground="Gray" Margin="25,0,5,10">Beneficios financieros totales</TextBlock>
+
+                            <Separator Margin="0,10"/>
+
+                            <Button x:Name="btnGenerateReport" Click="GenerateReport" Padding="10" Margin="5" Background="DodgerBlue" Foreground="White" FontWeight="Bold">
+                                Generar Informe
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+                    <cr:CrystalReportsViewer x:Name="crViewer" 
+                                 Grid.Column="2" 
+                                 Grid.Row="0" 
+                                 Grid.RowSpan="4" 
+                                 Margin="5" 
+                                 ShowLogo="False"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

@@ -434,7 +434,7 @@ namespace Estudio1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ReportereservasMesRow AddReportereservasMesRow(string nombreHuesped, string matricula, string tipoVehiculo, string idParcela, string fechaEntrada) {
+            public ReportereservasMesRow AddReportereservasMesRow(string nombreHuesped, string matricula, string tipoVehiculo, string idParcela, System.DateTime fechaEntrada) {
                 ReportereservasMesRow rowReportereservasMesRow = ((ReportereservasMesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         nombreHuesped,
@@ -482,7 +482,7 @@ namespace Estudio1 {
                 base.Columns.Add(this.columntipoVehiculo);
                 this.columnidParcela = new global::System.Data.DataColumn("idParcela", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnidParcela);
-                this.columnfechaEntrada = new global::System.Data.DataColumn("fechaEntrada", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnfechaEntrada = new global::System.Data.DataColumn("fechaEntrada", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfechaEntrada);
             }
             
@@ -707,7 +707,7 @@ namespace Estudio1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ReporteFinancieroRow AddReporteFinancieroRow(string fechaEntrada, string costeTotal) {
+            public ReporteFinancieroRow AddReporteFinancieroRow(double fechaEntrada, string costeTotal) {
                 ReporteFinancieroRow rowReporteFinancieroRow = ((ReporteFinancieroRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         fechaEntrada,
@@ -741,7 +741,7 @@ namespace Estudio1 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnfechaEntrada = new global::System.Data.DataColumn("fechaEntrada", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnfechaEntrada = new global::System.Data.DataColumn("fechaEntrada", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfechaEntrada);
                 this.columncosteTotal = new global::System.Data.DataColumn("costeTotal", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncosteTotal);
@@ -953,10 +953,10 @@ namespace Estudio1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string fechaEntrada {
+            public System.DateTime fechaEntrada {
                 get {
                     try {
-                        return ((string)(this[this.tableReportereservasMes.fechaEntradaColumn]));
+                        return ((global::System.DateTime)(this[this.tableReportereservasMes.fechaEntradaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'fechaEntrada\' de la tabla \'ReportereservasMes\' es DBNull." +
@@ -1045,10 +1045,10 @@ namespace Estudio1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string fechaEntrada {
+            public double fechaEntrada {
                 get {
                     try {
-                        return ((string)(this[this.tableReporteFinanciero.fechaEntradaColumn]));
+                        return ((double)(this[this.tableReporteFinanciero.fechaEntradaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'fechaEntrada\' de la tabla \'ReporteFinanciero\' es DBNull.", e);

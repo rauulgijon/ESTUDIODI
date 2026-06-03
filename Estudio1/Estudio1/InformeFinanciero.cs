@@ -16,14 +16,14 @@ namespace Estudio1 {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class InformeReservas : ReportClass {
+    public class InformeFinanciero : ReportClass {
         
-        public InformeReservas() {
+        public InformeFinanciero() {
         }
         
         public override string ResourceName {
             get {
-                return "InformeReservas.rpt";
+                return "InformeFinanciero.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Estudio1 {
         
         public override string FullResourceName {
             get {
-                return "Estudio1.InformeReservas.rpt";
+                return "Estudio1.InformeFinanciero.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace Estudio1 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace Estudio1 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,7 +82,7 @@ namespace Estudio1 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
                 return this.ReportDefinition.Sections[4];
             }
@@ -90,25 +90,17 @@ namespace Estudio1 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.Shared.IParameterField Parameter_SumaTotal {
             get {
-                return this.ReportDefinition.Sections[5];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
-            get {
-                return this.ReportDefinition.Sections[6];
+                return this.DataDefinition.ParameterFields[0];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedInformeReservas : Component, ICachedReport {
+    public class CachedInformeFinanciero : Component, ICachedReport {
         
-        public CachedInformeReservas() {
+        public CachedInformeFinanciero() {
         }
         
         [Browsable(false)]
@@ -145,7 +137,7 @@ namespace Estudio1 {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            InformeReservas rpt = new InformeReservas();
+            InformeFinanciero rpt = new InformeFinanciero();
             rpt.Site = this.Site;
             return rpt;
         }
