@@ -182,15 +182,29 @@ namespace Estudio1
         {
             try
             {
+                // Lee la fecha de entrada; si el usuario no puso nada, usa la fecha de HOY y le da formato MySQL (Año-Mes-Día).
                 string checkIn = dpResCheckIn.SelectedDate?.ToString("yyyy-MM-dd") ?? DateTime.Now.ToString("yyyy-MM-dd");
+
+                // Lee la fecha de salida; si el usuario no puso nada, usa la fecha de MAÑANA (hoy + 1 día) con formato MySQL.
                 string checkOut = dpResCheckOut.SelectedDate?.ToString("yyyy-MM-dd") ?? DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
 
+                // Crea el objeto Reserva empaquetando las fechas y lo que el usuario haya escrito en las cajas de texto.
                 Reserva r = new Reserva(0, int.Parse(txtResGuestId.Text), int.Parse(txtResParcelId.Text), checkIn, checkOut, float.Parse(txtResTotalCost.Text), txtResStatus.Text);
+
+                // Manda ese objeto a tu clase Persistence para guardarlo en la base de datos con un INSERT.
                 new ReservaPersistence().insertarReserva(r);
+
+                // Refresca el DataGrid de la pantalla para que la nueva reserva aparezca al instante.
                 CargarDatos();
+
+                // Borra los textos de las cajitas para dejarlas limpias por si quieres añadir otra reserva.
                 btnResClear_Click(null, null);
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex)
+            {
+                // Si el usuario pone letras en el ID o en el coste, el programa no explota, te saca esta ventanita de error.
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnResUpdate_Click(object sender, RoutedEventArgs e)
@@ -286,8 +300,8 @@ namespace Estudio1
 
                 if (rbReservasMes.IsChecked == true)
                 {
-                    /*
-                     * // Los alias (AS ...) cuadran EXACTAMENTE con los nombres de tu DataSet
+                    
+                     // Los alias (AS ...) cuadran EXACTAMENTE con los nombres de tu DataSet
                     string sql = @"
                         SELECT g.nombre AS nombreHuesped, 
                                g.matricula AS matricula, 
@@ -308,7 +322,7 @@ namespace Estudio1
                     miReporte.SetDataSource(datos);
 
                     crViewer.ViewerCore.ReportSource = miReporte;
-                    */
+                    
                 }
                 else if (rbReporteFinanciero.IsChecked == true)
                 {

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3D989BB1-28CB-4085-A15E-5AE77ABB0248}</ProjectGuid>
+    <ProjectGuid>{D9730161-149E-4594-8A87-F6A3BDB8D616}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Estudio1</RootNamespace>
-    <AssemblyName>Estudio1</AssemblyName>
+    <RootNamespace>minihito</RootNamespace>
+    <AssemblyName>minihito</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -112,49 +112,57 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="view\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    <Compile Include="persistence\DBBroker.cs" />
+    <Compile Include="view\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CampingDataSet.cs">
-      <DependentUpon>CampingDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="CampingDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CampingDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="domain\Huesped.cs" />
-    <Compile Include="domain\Parcela.cs" />
-    <Compile Include="domain\Reserva.cs" />
-    <Compile Include="domain\TipoVehiculo.cs" />
-    <Compile Include="InformeFinanciero.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InformeFinanciero.rpt</DependentUpon>
+    <Compile Include="crystalreport\CrystalReport1.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="InformeReservas.cs">
+    <Compile Include="crystalreport\CrystalReport11.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>InformeReservas.rpt</DependentUpon>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="persistence\DBBroker.cs" />
-    <Compile Include="persistence\HuespedPersistence.cs" />
-    <Compile Include="persistence\ParcelaPersistence.cs" />
-    <Compile Include="persistence\ReservaPersistence.cs" />
-    <Compile Include="persistence\TipoVehiculoPersistence.cs" />
+    <Compile Include="crystalreport\DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="crystalreport\DataSet1.Designer.cs">
+      <DependentUpon>DataSet1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="crystalreport\DataSet11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="domain\Alumnado.cs" />
+    <Compile Include="domain\Empresa.cs" />
+    <Compile Include="domain\Grupo.cs" />
+    <Compile Include="domain\Reto.cs" />
+    <Compile Include="domain\TalentLab.cs" />
     <Compile Include="view\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
+    <Page Include="view\LoginView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="persistence\manages\AlumnadoPersistence.cs" />
+    <Compile Include="persistence\manages\EmpresaPersistence.cs" />
+    <Compile Include="persistence\manages\GrupoPersistence.cs" />
+    <Compile Include="persistence\manages\RetoPersistence.cs" />
+    <Compile Include="persistence\manages\TalentLabPersistence.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -168,28 +176,24 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="InformeFinanciero.rpt">
+    <EmbeddedResource Include="crystalreport\CrystalReport1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>InformeFinanciero.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InformeReservas.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>InformeReservas.cs</LastGenOutput>
+      <LastGenOutput>CrystalReport11.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="CampingDataSet.xsc">
-      <DependentUpon>CampingDataSet.xsd</DependentUpon>
+    <None Include="crystalreport\DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
-    <None Include="CampingDataSet.xsd">
-      <SubType>Designer</SubType>
+    <None Include="crystalreport\DataSet1.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CampingDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
-    <None Include="CampingDataSet.xss">
-      <DependentUpon>CampingDataSet.xsd</DependentUpon>
+    <None Include="crystalreport\DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -203,6 +207,12 @@
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="images\393MF62w_400x400.png" />
+    <Resource Include="images\back-image.jpg" />
+    <Resource Include="images\key-icon.png" />
+    <Resource Include="images\logo.png" />
+    <Resource Include="images\user-icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
