@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="CampingDataSet" targetNamespace="http://tempuri.org/CampingDataSet.xsd" xmlns:mstns="http://tempuri.org/CampingDataSet.xsd" xmlns="http://tempuri.org/CampingDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="CampingDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="CampingDataSet" msprop:Generator_DataSetName="CampingDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ReporteFinanciero" msprop:Generator_RowEvHandlerName="ReporteFinancieroRowChangeEventHandler" msprop:Generator_RowDeletedName="ReporteFinancieroRowDeleted" msprop:Generator_RowDeletingName="ReporteFinancieroRowDeleting" msprop:Generator_RowEvArgName="ReporteFinancieroRowChangeEvent" msprop:Generator_TablePropName="ReporteFinanciero" msprop:Generator_RowChangedName="ReporteFinancieroRowChanged" msprop:Generator_RowChangingName="ReporteFinancieroRowChanging" msprop:Generator_TableClassName="ReporteFinancieroDataTable" msprop:Generator_RowClassName="ReporteFinancieroRow" msprop:Generator_TableVarName="tableReporteFinanciero" msprop:Generator_UserTableName="ReporteFinanciero">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nombreGuest" msprop:Generator_ColumnPropNameInRow="nombreGuest" msprop:Generator_ColumnPropNameInTable="nombreGuestColumn" msprop:Generator_ColumnVarNameInTable="columnnombreGuest" msprop:Generator_UserColumnName="nombreGuest" type="xs:string" minOccurs="0" />
+              <xs:element name="numParcela" msprop:Generator_ColumnPropNameInRow="numParcela" msprop:Generator_ColumnPropNameInTable="numParcelaColumn" msprop:Generator_ColumnVarNameInTable="columnnumParcela" msprop:Generator_UserColumnName="numParcela" type="xs:string" minOccurs="0" />
+              <xs:element name="fechaEntrada" msprop:Generator_ColumnPropNameInRow="fechaEntrada" msprop:Generator_ColumnPropNameInTable="fechaEntradaColumn" msprop:Generator_ColumnVarNameInTable="columnfechaEntrada" msprop:Generator_UserColumnName="fechaEntrada" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="precio" msprop:Generator_ColumnPropNameInRow="precio" msprop:Generator_ColumnPropNameInTable="precioColumn" msprop:Generator_ColumnVarNameInTable="columnprecio" msprop:Generator_UserColumnName="precio" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

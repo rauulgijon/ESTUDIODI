@@ -1,0 +1,26 @@
+﻿<Window x:Class="SimulacroFinal.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:cr="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimulacroFinal"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Background="#EEE" VerticalAlignment="Stretch">
+            <Button x:Name="btnInformeFinanciero" 
+                Content="Generar Informe Financiero" 
+                Width="200" Height="40" 
+                Margin="20,0,0,0" 
+                Click="btnInformeFinanciero_Click" />
+        </StackPanel>
+
+        <cr:CrystalReportsViewer x:Name="crViewer" Grid.Row="1" Margin="10"/>
+    </Grid>
+</Window>
