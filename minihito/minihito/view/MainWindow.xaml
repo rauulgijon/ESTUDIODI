@@ -223,7 +223,7 @@
             </Grid>
         </Border>
 
-        <TabControl x:Name="MainTabControl" Grid.Row="1" Style="{StaticResource TabControlStyle}" ItemContainerStyle="{StaticResource TabItemStyle}" Margin="0" Padding="0">
+        <TabControl x:Name="MainTabControl" SelectionChanged="MainTabControl_SelectionChanged" Grid.Row="1" Style="{StaticResource TabControlStyle}" ItemContainerStyle="{StaticResource TabItemStyle}" Margin="0" Padding="0">
 
             <TabItem Header="👥 ALUMNADO" IsSelected="True">
                 <Grid Margin="15">

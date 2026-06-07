@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="VeterinariaDataSet" targetNamespace="http://tempuri.org/VeterinariaDataSet.xsd" xmlns:mstns="http://tempuri.org/VeterinariaDataSet.xsd" xmlns="http://tempuri.org/VeterinariaDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="VeterinariaDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="VeterinariaDataSet" msprop:Generator_DataSetName="VeterinariaDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DatosHistorial" msprop:Generator_RowEvHandlerName="DatosHistorialRowChangeEventHandler" msprop:Generator_RowDeletedName="DatosHistorialRowDeleted" msprop:Generator_RowDeletingName="DatosHistorialRowDeleting" msprop:Generator_RowEvArgName="DatosHistorialRowChangeEvent" msprop:Generator_TablePropName="DatosHistorial" msprop:Generator_RowChangedName="DatosHistorialRowChanged" msprop:Generator_RowChangingName="DatosHistorialRowChanging" msprop:Generator_TableClassName="DatosHistorialDataTable" msprop:Generator_RowClassName="DatosHistorialRow" msprop:Generator_TableVarName="tableDatosHistorial" msprop:Generator_UserTableName="DatosHistorial">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nombreMascota" msprop:Generator_ColumnPropNameInRow="nombreMascota" msprop:Generator_ColumnPropNameInTable="nombreMascotaColumn" msprop:Generator_ColumnVarNameInTable="columnnombreMascota" msprop:Generator_UserColumnName="nombreMascota" type="xs:string" minOccurs="0" />
+              <xs:element name="especie" msprop:Generator_ColumnPropNameInRow="especie" msprop:Generator_ColumnPropNameInTable="especieColumn" msprop:Generator_ColumnVarNameInTable="columnespecie" msprop:Generator_UserColumnName="especie" type="xs:string" minOccurs="0" />
+              <xs:element name="fechaTratamiento" msprop:Generator_ColumnPropNameInRow="fechaTratamiento" msprop:Generator_ColumnPropNameInTable="fechaTratamientoColumn" msprop:Generator_ColumnVarNameInTable="columnfechaTratamiento" msprop:Generator_UserColumnName="fechaTratamiento" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="descripcion" msprop:Generator_ColumnPropNameInRow="descripcion" msprop:Generator_ColumnPropNameInTable="descripcionColumn" msprop:Generator_ColumnVarNameInTable="columndescripcion" msprop:Generator_UserColumnName="descripcion" type="xs:string" minOccurs="0" />
+              <xs:element name="costeTratamiento" msprop:Generator_ColumnPropNameInRow="costeTratamiento" msprop:Generator_ColumnPropNameInTable="costeTratamientoColumn" msprop:Generator_ColumnVarNameInTable="columncosteTratamiento" msprop:Generator_UserColumnName="costeTratamiento" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

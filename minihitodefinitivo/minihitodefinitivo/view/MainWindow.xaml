@@ -1,0 +1,529 @@
+﻿<Window x:Class="minihitodefinitivo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:minihitodefinitivo"
+        xmlns:viewer="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer"
+        mc:Ignorable="d"
+        Title="Sistema de Gestión - TalentLab" Height="720" Width="1100"
+        Background="{DynamicResource BgBase}">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="BgBase"          Color="#0F172A"/>
+        <SolidColorBrush x:Key="BgPanel"         Color="#1E293B"/>
+        <SolidColorBrush x:Key="BgHeader"        Color="#0B1120"/>
+        <SolidColorBrush x:Key="BgInput"         Color="#334155"/>
+
+        <SolidColorBrush x:Key="AccentPrimary"   Color="#3B82F6"/>
+        <SolidColorBrush x:Key="AccentSuccess"   Color="#10B981"/>
+        <SolidColorBrush x:Key="AccentDanger"    Color="#EF4444"/>
+
+        <SolidColorBrush x:Key="TextMain"        Color="#F8FAFC"/>
+        <SolidColorBrush x:Key="TextMuted"       Color="#94A3B8"/>
+        <SolidColorBrush x:Key="BorderColor"     Color="#475569"/>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource TextMain}"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="{StaticResource BgInput}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextMain}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="6,4"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Background" Value="{StaticResource BgInput}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextMain}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+            <Setter Property="Padding" Value="6,4"/>
+        </Style>
+
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Background" Value="{StaticResource BgPanel}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextMain}"/>
+            <Setter Property="Padding" Value="10,6"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource AccentPrimary}"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="{StaticResource BgInput}"/>
+                    <Setter Property="Foreground" Value="{StaticResource TextMain}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="ListBox">
+            <Setter Property="Background" Value="{StaticResource BgInput}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextMain}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="{StaticResource BgPanel}"/>
+            <Setter Property="RowBackground" Value="{StaticResource BgPanel}"/>
+            <Setter Property="AlternatingRowBackground" Value="{StaticResource BgInput}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextMain}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="{StaticResource BorderColor}"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+        </Style>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="{StaticResource BgHeader}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextMain}"/>
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+        </Style>
+        <Style TargetType="DataGridRow">
+            <Setter Property="Background" Value="{StaticResource BgPanel}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextMain}"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="{StaticResource AccentPrimary}"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="AccentButton" TargetType="Button">
+            <Setter Property="Background"    Value="{StaticResource AccentPrimary}"/>
+            <Setter Property="Foreground"    Value="White"/>
+            <Setter Property="Padding"       Value="8,6"/>
+            <Setter Property="Margin"        Value="4"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontWeight"    Value="SemiBold"/>
+            <Setter Property="FontSize"      Value="12"/>
+            <Setter Property="Cursor"        Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="4" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#2563EB"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="SuccessButton" TargetType="Button" BasedOn="{StaticResource AccentButton}">
+            <Setter Property="Background" Value="{StaticResource AccentSuccess}"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#059669"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="GhostButton" TargetType="Button">
+            <Setter Property="Background"      Value="Transparent"/>
+            <Setter Property="Foreground"      Value="{StaticResource TextMain}"/>
+            <Setter Property="BorderBrush"     Value="{StaticResource BorderColor}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding"         Value="8,6"/>
+            <Setter Property="Margin"          Value="4"/>
+            <Setter Property="FontWeight"      Value="SemiBold"/>
+            <Setter Property="FontSize"        Value="12"/>
+            <Setter Property="Cursor"          Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource BgInput}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="DangerGhostButton" TargetType="Button" BasedOn="{StaticResource GhostButton}">
+            <Setter Property="Foreground" Value="{StaticResource AccentDanger}"/>
+            <Setter Property="BorderBrush" Value="#7F1D1D"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#7F1D1D"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="TabControlStyle" TargetType="TabControl">
+            <Setter Property="Background"      Value="{StaticResource BgBase}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <Style x:Key="TabItemStyle" TargetType="TabItem">
+            <Setter Property="Foreground" Value="{StaticResource TextMuted}"/>
+            <Setter Property="Background" Value="{StaticResource BgHeader}"/>
+            <Setter Property="Padding"    Value="20,12"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Grid>
+                            <Border Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{StaticResource BorderColor}" BorderThickness="0,0,1,0" CornerRadius="0">
+                                <ContentPresenter x:Name="Content" ContentSource="Header" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter TargetName="Bd" Property="Background"        Value="{StaticResource BgBase}"/>
+                                <Setter TargetName="Bd" Property="BorderBrush"       Value="{StaticResource AccentPrimary}"/>
+                                <Setter TargetName="Bd" Property="BorderThickness"   Value="0,3,1,0"/>
+                                <Setter Property="Foreground"  Value="{StaticResource AccentPrimary}"/>
+                                <Setter Property="FontWeight"  Value="Bold"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="{StaticResource TextMain}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="{StaticResource BgHeader}" Padding="20,0" BorderBrush="{StaticResource AccentPrimary}" BorderThickness="0,0,0,2">
+            <Grid>
+                <TextBlock Text="¿ACEPTAS EL RETO?" Foreground="{StaticResource TextMain}" FontSize="28" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            </Grid>
+        </Border>
+
+        <TabControl x:Name="MainTabControl" Grid.Row="1" Style="{StaticResource TabControlStyle}" ItemContainerStyle="{StaticResource TabItemStyle}" Margin="0" Padding="0">
+
+            <TabItem Header="ALUMNADO" IsSelected="True">
+                <Grid Margin="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="80"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBox x:Name="buscartxt" Width="280" Height="32" VerticalAlignment="Center" TextWrapping="NoWrap" Margin="0,0,10,0"/>
+                        <Button Style="{StaticResource AccentButton}" Content="Buscar" Width="100" Height="32" Click="BuscarTexto_Click"/>
+                    </StackPanel>
+
+                    <DataGrid x:Name="dgvPersonas" Grid.Column="0" Grid.Row="1" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" SelectionChanged="dgvPersonas_selectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID"        Binding="{Binding Id}"          Width="60"/>
+                            <DataGridTextColumn Header="Nombre"    Binding="{Binding Nombre}"      Width="*"/>
+                            <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}"   Width="*"/>
+                            <DataGridTextColumn Header="Curso"     Binding="{Binding Especialidad}" Width="90"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Border Grid.Column="1" Grid.Row="1" Background="{StaticResource BgPanel}" CornerRadius="8" Padding="20" Margin="20,0,0,0" VerticalAlignment="Top" BorderBrush="{StaticResource BorderColor}" BorderThickness="1">
+                        <StackPanel>
+                            <TextBlock Text="ALUMNADO" FontSize="18" FontWeight="Bold" Foreground="{StaticResource AccentPrimary}" Margin="0,0,0,15"/>
+                            <TextBlock Text="Nombre" Margin="0,4,0,4" Foreground="{StaticResource TextMuted}"/>
+                            <TextBox x:Name="nombretxt" Height="30"/>
+                            <TextBlock Text="Apellidos" Margin="0,15,0,4" Foreground="{StaticResource TextMuted}"/>
+                            <TextBox x:Name="apellidotxt" Height="30"/>
+                            <TextBlock Text="Curso" Margin="0,15,0,4" Foreground="{StaticResource TextMuted}"/>
+                            <TextBox x:Name="cursotxt" Height="30"/>
+                        </StackPanel>
+                    </Border>
+
+                    <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button x:Name="bntagregar"   Style="{StaticResource SuccessButton}" Content="Añadir" Width="130" Height="38" Margin="8" Click="btnAdd_click"/>
+                        <Button x:Name="bntmodificar" Style="{StaticResource AccentButton}" Content="Modificar" Width="130" Height="38" Margin="8" Click="btnModificar_click"/>
+                        <Button x:Name="bnteliminar"  Style="{StaticResource DangerGhostButton}" Content="Eliminar" Width="130" Height="38" Margin="8" Click="btnEliminar_Click"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="GRUPOS">
+                <Grid Margin="15">
+                    <Border BorderBrush="{StaticResource BorderColor}" BorderThickness="1" CornerRadius="8" Background="{StaticResource BgPanel}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" Background="{StaticResource BgHeader}" CornerRadius="8,8,0,0" Padding="16,0" BorderBrush="{StaticResource BorderColor}" BorderThickness="0,0,0,1">
+                                <TextBlock Text="GESTIÓN DE GRUPOS" Foreground="{StaticResource TextMain}" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
+                            </Border>
+
+                            <Grid Grid.Row="1" Background="Transparent" Margin="15">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="120"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" Margin="0,0,0,8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1.1*"/>
+                                        <ColumnDefinition Width="90"/>
+                                        <ColumnDefinition Width="1.1*"/>
+                                        <ColumnDefinition Width="220"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="ALUMNADO NO ASIGNADO" FontWeight="Bold" FontSize="11" Foreground="{StaticResource TextMuted}"/>
+                                    <TextBlock Grid.Column="2" Text="ALUMNADO SELECCIONADO" FontWeight="Bold" FontSize="11" Foreground="{StaticResource TextMuted}" Margin="4,0,0,0"/>
+                                    <TextBlock Grid.Column="3" Text="NOMBRE DEL GRUPO" FontWeight="Bold" FontSize="11" Foreground="{StaticResource TextMuted}" HorizontalAlignment="Center"/>
+                                </Grid>
+
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1.1*"/>
+                                        <ColumnDefinition Width="90"/>
+                                        <ColumnDefinition Width="1.1*"/>
+                                        <ColumnDefinition Width="220"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <ListBox x:Name="ListUnassigned" Grid.Column="0" SelectionMode="Multiple" Margin="0,0,5,0"/>
+
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <Button x:Name="BtnMoverDerecha" Style="{StaticResource GhostButton}" Width="60" Height="34" Content="&#x27A4;" FontSize="16" Click="BtnMoverDerecha_Click"/>
+                                        <Button x:Name="BtnMoverIzquierda" Style="{StaticResource GhostButton}" Width="60" Height="34" Content="&#x27A4;" FontSize="16" RenderTransformOrigin="0.5,0.5" Margin="0,15,0,0" Click="BtnMoverIzquierda_Click">
+                                            <Button.RenderTransform>
+                                                <ScaleTransform ScaleX="-1"/>
+                                            </Button.RenderTransform>
+                                        </Button>
+                                    </StackPanel>
+
+                                    <ListBox x:Name="ListSelected" Grid.Column="2" SelectionMode="Multiple" Margin="5,0,0,0"/>
+
+                                    <StackPanel Grid.Column="3" Margin="20,0,0,0" VerticalAlignment="Top">
+                                        <TextBox x:Name="GroupNameTextBox" Height="32" Margin="0,0,0,15"/>
+                                        <Button x:Name="BtnAñadirModificar" Content="Añadir / Modificar" Style="{StaticResource SuccessButton}" Height="34" Click="BtnAñadirModificar_Click"/>
+                                        <Button x:Name="BtnEliminar" Content="Eliminar Grupo" Style="{StaticResource DangerGhostButton}" Height="34" Margin="0,10,0,0" Click="BtnEliminar_Click"/>
+                                    </StackPanel>
+                                </Grid>
+
+                                <Grid Grid.Row="2" Margin="0,15,0,0">
+                                    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="400">
+                                        <TextBlock Text="MIEMBROS DEL GRUPO SELECCIONADO" FontWeight="Bold" FontSize="11" Foreground="{StaticResource TextMuted}" Margin="0,0,0,8"/>
+                                        <ListBox x:Name="ListGroupMembers" Height="80" SelectionChanged="ListGroupMembers_SelectionChanged"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="EMPRESAS">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1.2*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBox x:Name="buscarEmpresatxt" Width="280" Height="32" Margin="0,0,10,0"/>
+                        <Button Content="Buscar" Width="100" Height="32" Style="{StaticResource AccentButton}" Click="BuscarTextoEmpresa_Click"/>
+                    </StackPanel>
+
+                    <DataGrid x:Name="dgvEmpresa" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Customers}" Margin="0,0,0,15">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="RAZÓN SOCIAL" Binding="{Binding Razon}"    Width="2*"/>
+                            <DataGridTextColumn Header="DNI/CIF"      Binding="{Binding Dni}"      Width="1*"/>
+                            <DataGridTextColumn Header="TELÉFONO"     Binding="{Binding Telefono}" Width="150"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Border Grid.Row="2" Background="{StaticResource BgPanel}" BorderBrush="{StaticResource AccentPrimary}" BorderThickness="4,0,0,0" Margin="0,0,0,15" Padding="20,15" CornerRadius="0,6,6,0">
+                        <Grid DataContext="{Binding SelectedItem, ElementName=dgvEmpresa}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="1.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="R. SOCIAL:" Foreground="{StaticResource TextMuted}" FontWeight="Bold" Margin="0,0,10,10"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Razon}" Margin="0,0,20,10"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="DIRECCIÓN:" Foreground="{StaticResource TextMuted}" FontWeight="Bold" Margin="0,0,10,0"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Direccion}" Margin="0,0,20,0"/>
+                            <TextBlock Grid.Row="0" Grid.Column="2" Text="CIF/DNI:" Foreground="{StaticResource TextMuted}" FontWeight="Bold" Margin="0,0,10,10"/>
+                            <TextBlock Grid.Row="0" Grid.Column="3" Text="{Binding Dni}" Margin="0,0,20,10"/>
+                            <TextBlock Grid.Row="1" Grid.Column="2" Text="TELÉFONO:" Foreground="{StaticResource TextMuted}" FontWeight="Bold" Margin="0,0,10,0"/>
+                            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Telefono}" Margin="0,0,20,0"/>
+                            <TextBlock Grid.Row="0" Grid.Column="4" Text="DESCRIPCIÓN:" Foreground="{StaticResource TextMuted}" FontWeight="Bold" Margin="0,0,10,10"/>
+                            <TextBlock Grid.Row="0" Grid.Column="5" Grid.RowSpan="2" Text="{Binding Descripcion}" TextWrapping="Wrap" VerticalAlignment="Top" MaxHeight="50" Foreground="{StaticResource AccentPrimary}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Row="3" Background="{StaticResource BgPanel}" BorderBrush="{StaticResource BorderColor}" BorderThickness="1" CornerRadius="8" Padding="20">
+                        <StackPanel>
+                            <TextBlock Text="GESTIÓN Y EDICIÓN DE EMPRESA" FontSize="14" FontWeight="Bold" Foreground="{StaticResource AccentPrimary}" Margin="0,0,0,15"/>
+                            <UniformGrid Columns="3" Margin="0,0,0,15">
+                                <StackPanel Margin="0,0,15,0">
+                                    <TextBlock Text="Razón Social" Foreground="{StaticResource TextMuted}" Margin="0,0,0,4"/>
+                                    <TextBox x:Name="razontxt" Height="30" Text="{Binding SelectedItem.Razon, ElementName=dgvEmpresa}"/>
+                                </StackPanel>
+                                <StackPanel Margin="0,0,15,0">
+                                    <TextBlock Text="DNI / CIF" Foreground="{StaticResource TextMuted}" Margin="0,0,0,4"/>
+                                    <TextBox x:Name="dnitxt" Height="30" Text="{Binding SelectedItem.Dni, ElementName=dgvEmpresa}"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <TextBlock Text="Teléfono" Foreground="{StaticResource TextMuted}" Margin="0,0,0,4"/>
+                                    <TextBox x:Name="telefonotxt" Height="30" Text="{Binding SelectedItem.Telefono, ElementName=dgvEmpresa}"/>
+                                </StackPanel>
+                            </UniformGrid>
+                            <TextBlock Text="Dirección" Foreground="{StaticResource TextMuted}" Margin="0,0,0,4"/>
+                            <TextBox x:Name="direcciontxt" Height="30" Margin="0,0,0,15" Text="{Binding SelectedItem.Direccion, ElementName=dgvEmpresa}"/>
+                            <TextBlock Text="Descripción" Foreground="{StaticResource TextMuted}" Margin="0,0,0,4"/>
+                            <TextBox x:Name="descripciontxt" Height="60" TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding SelectedItem.Descripcion, ElementName=dgvEmpresa}"/>
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                                <Button Content="Añadir" Width="110" Height="34" Margin="10,0,0,0" Style="{StaticResource SuccessButton}" Click="btnAddEmpresa_click"/>
+                                <Button Content="Guardar" Width="110" Height="34" Margin="10,0,0,0" Style="{StaticResource AccentButton}" Click="btnModificarEmpresa_click"/>
+                                <Button Content="Eliminar" Width="110" Height="34" Margin="10,0,0,0" Style="{StaticResource DangerGhostButton}" Click="btnEliminarEmpresa_Click"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="RETOS">
+                <Grid Margin="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="80"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBox x:Name="buscarRetotxt" Width="280" Height="32" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        <Button Content="Buscar Reto" Width="120" Height="32" Click="BuscarReto_Click" Style="{StaticResource AccentButton}"/>
+                    </StackPanel>
+
+                    <DataGrid x:Name="dgvRetos" Grid.Column="0" Grid.Row="1" AutoGenerateColumns="False" SelectionChanged="dgvRetos_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID"          Binding="{Binding Id_Reto}"         Width="60"/>
+                            <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion_reto}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Border Grid.Column="1" Grid.Row="1" Background="{StaticResource BgPanel}" CornerRadius="8" Padding="20" Margin="20,0,0,0" BorderBrush="{StaticResource BorderColor}" BorderThickness="1" VerticalAlignment="Top">
+                        <StackPanel>
+                            <TextBlock Text="DETALLE DEL RETO" FontSize="18" FontWeight="Bold" Foreground="{StaticResource AccentPrimary}" Margin="0,0,0,15"/>
+                            <TextBlock Text="ID Reto (Solo lectura)" Foreground="{StaticResource TextMuted}" Margin="0,0,0,4"/>
+                            <TextBox x:Name="idRetotxt" Height="30" IsReadOnly="True" Background="{StaticResource BgBase}" Foreground="{StaticResource TextMuted}" Margin="0,0,0,15"/>
+                            <TextBlock Text="Descripción" Foreground="{StaticResource TextMuted}" Margin="0,0,0,4"/>
+                            <TextBox x:Name="descRetotxt" Height="100" TextWrapping="Wrap" AcceptsReturn="True"/>
+                        </StackPanel>
+                    </Border>
+
+                    <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button x:Name="btnAgregarReto"   Content="Añadir" Width="130" Height="38" Margin="8" Click="BtnAddReto_Click" Style="{StaticResource SuccessButton}"/>
+                        <Button x:Name="btnModificarReto" Content="Modificar" Width="130" Height="38" Margin="8" Click="BtnModificarReto_Click" Style="{StaticResource AccentButton}"/>
+                        <Button x:Name="btnEliminarReto"  Content="Eliminar" Width="130" Height="38" Margin="8" Click="BtnEliminarReto_Click" Style="{StaticResource DangerGhostButton}"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="TALENT LAB">
+                <Grid Margin="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <DataGrid x:Name="dgvTalent" AutoGenerateColumns="False" SelectionChanged="dgvTalent_SelectionChanged" IsReadOnly="True" Margin="0,0,20,0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID"          Binding="{Binding Id_Talentlab}"       Width="50"/>
+                            <DataGridTextColumn Header="Título"      Binding="{Binding Titulo_descriptivo}" Width="*"/>
+                            <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}"        Width="*"/>
+                            <DataGridTextColumn Header="Coste"       Binding="{Binding Coste}"              Width="80"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Border Grid.Column="1" Background="{StaticResource BgPanel}" CornerRadius="8" BorderBrush="{StaticResource BorderColor}" BorderThickness="1">
+                        <ScrollViewer>
+                            <StackPanel Margin="20">
+                                <TextBlock Text="GESTIÓN TALENT LAB" FontSize="16" FontWeight="Bold" Foreground="{StaticResource AccentPrimary}" Margin="0,0,0,15"/>
+                                <TextBlock Text="Título Proyecto" Foreground="{StaticResource TextMuted}" Margin="0,0,0,4"/>
+                                <TextBox x:Name="txtTalentTitulo" Height="30" Margin="0,0,0,15"/>
+                                <TextBlock Text="Descripción" Foreground="{StaticResource TextMuted}" Margin="0,0,0,4"/>
+                                <TextBox x:Name="txtTalentDesc" Height="80" TextWrapping="Wrap" Margin="0,0,0,15"/>
+                                <TextBlock Text="Empresa Asignada" Foreground="{StaticResource TextMuted}" Margin="0,0,0,4"/>
+                                <ComboBox x:Name="cmbTalentEmpresa" Height="30" DisplayMemberPath="Razon" Margin="0,0,0,15"/>
+                                <TextBlock Text="Grupo Asignado" Foreground="{StaticResource TextMuted}" Margin="0,0,0,4"/>
+                                <ComboBox x:Name="cmbTalentGrupo" Height="30" DisplayMemberPath="Nombre" Margin="0,0,0,15"/>
+
+                                <Border BorderBrush="{StaticResource BorderColor}" BorderThickness="0,1,0,0" Margin="0,10,0,20"/>
+
+                                <TextBlock Text="Reto 1 (Principal)" Foreground="{StaticResource TextMain}" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                                <ComboBox x:Name="cmbReto1" Height="30" DisplayMemberPath="Descripcion_reto" Margin="0,0,0,15"/>
+                                <TextBlock Text="Reto 2 (Opcional)" Foreground="{StaticResource TextMuted}" Margin="0,0,0,4"/>
+                                <ComboBox x:Name="cmbReto2" Height="30" DisplayMemberPath="Descripcion_reto" Margin="0,0,0,15"/>
+                                <TextBlock Text="Reto 3 (Opcional)" Foreground="{StaticResource TextMuted}" Margin="0,0,0,4"/>
+                                <ComboBox x:Name="cmbReto3" Height="30" DisplayMemberPath="Descripcion_reto" Margin="0,0,0,15"/>
+                                <TextBlock Text="Coste Estimado" Foreground="{StaticResource TextMuted}" Margin="0,0,0,4"/>
+                                <TextBox x:Name="txtTalentCoste" Height="30" Margin="0,0,0,25"/>
+
+                                <UniformGrid Columns="2" Rows="2">
+                                    <Button Content="Registrar" Height="36" Click="btnInsertarTalent_Click" Style="{StaticResource SuccessButton}" Margin="0,0,5,10"/>
+                                    <Button Content="Modificar" Height="36" Click="btnModificarTalent_Click" Style="{StaticResource AccentButton}" Margin="5,0,0,10"/>
+                                    <Button Content="Eliminar" Height="36" Click="btnEliminarTalent_Click" Style="{StaticResource DangerGhostButton}" Margin="0,0,0,0" Grid.ColumnSpan="2"/>
+                                </UniformGrid>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="INFORMES">
+                <Grid Background="{StaticResource BgPanel}">
+                    <viewer:CrystalReportsViewer x:Name="visor" Margin="15" />
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</Window>

@@ -4,6 +4,10 @@
 
     partial class CampingDataSet
     {
+        partial class ReporteFinancieroDataTable
+        {
+        }
+
         partial class ReporteReservasMesDataTable
         {
         }

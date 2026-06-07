@@ -1,10 +1,10 @@
 ﻿
-using minihito.Persistence;
+using minihito.crystalreport;
 using minihito.domain;
 using minihito.domain.reto;
 using minihito.domain.talentlab;
 using minihito.persistence;
-using minihito.crystalreport;
+using minihito.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -38,7 +38,6 @@ namespace minihito
         public MainWindow()
         {
             InitializeComponent();
-            CargarInformeDesdeMySQL();
 
 
             this.DataContext = this;
@@ -47,24 +46,24 @@ namespace minihito
             alumno = new Alumnado();
             reto = new Reto();
 
-            
+
             lstEmpresa = empresa.getListaEmpresa();
             lstAlumnado = alumno.getListaPersonas();
             lstReto = reto.getListaReto();
 
-            
+
             Grupo tempGrupo = new Grupo();
             lstGrupos = tempGrupo.getGrupos();
 
-         
+
             dgvPersonas.ItemsSource = lstAlumnado;
             dgvEmpresa.ItemsSource = lstEmpresa;
             dgvRetos.ItemsSource = lstReto;
 
-           
+
             CargarDatosTalent();
 
-           
+
             CargarDatos();
 
             start();
@@ -78,7 +77,7 @@ namespace minihito
         }
         private void CargarDatosTalent()
         {
-           
+
             lstTalentLabs = talentLogica.getLista();
             dgvTalent.ItemsSource = null;
             dgvTalent.ItemsSource = lstTalentLabs;
@@ -91,10 +90,10 @@ namespace minihito
         }
         private void CargarDatosRetos()
         {
-          
+
             lstReto = reto.getListaReto();
 
-           
+
             dgvRetos.ItemsSource = null;
             dgvRetos.ItemsSource = lstReto;
         }
@@ -110,10 +109,10 @@ namespace minihito
         }
         private void dgvRetos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-   
+
             if (dgvRetos.SelectedItem is Reto seleccionado)
             {
-       
+
                 idRetotxt.Text = seleccionado.Id_Reto.ToString();
                 descRetotxt.Text = seleccionado.Descripcion_reto;
             }
@@ -128,7 +127,7 @@ namespace minihito
                 return;
             }
             Alumnado alumno = new Alumnado(nombretxt.Text, apellidotxt.Text, int.Parse(cursotxt.Text));
-            
+
             alumno.insertar();
             lstAlumnado.Add(alumno);
             dgvPersonas.Items.Refresh();
@@ -142,7 +141,7 @@ namespace minihito
 
             if (!string.IsNullOrEmpty(texto))
             {
-                
+
                 var listaFiltrada = lstAlumnado.Where(p =>
                     p.Nombre.IndexOf(texto, StringComparison.OrdinalIgnoreCase) >= 0 ||
                     p.Apellidos.IndexOf(texto, StringComparison.OrdinalIgnoreCase) >= 0)
@@ -170,7 +169,7 @@ namespace minihito
 
         private void btnModificar_click(Object sender, RoutedEventArgs e)
         {
-           
+
             int curso;
 
             if (!int.TryParse(cursotxt.Text, out curso) || (curso != 1 && curso != 2))
@@ -188,7 +187,7 @@ namespace minihito
         }
         private void btnAddEmpresa_click(object sender, RoutedEventArgs e)
         {
-            Empresa empresa = new Empresa(razontxt.Text, dnitxt.Text,descripciontxt.Text, int.Parse(telefonotxt.Text),direcciontxt.Text);
+            Empresa empresa = new Empresa(razontxt.Text, dnitxt.Text, descripciontxt.Text, int.Parse(telefonotxt.Text), direcciontxt.Text);
             empresa.insertar();
             Customers.Add(empresa);
             lstEmpresa.Add(empresa);
@@ -203,7 +202,7 @@ namespace minihito
 
             if (!string.IsNullOrEmpty(texto))
             {
-               
+
                 var listaFiltrada = lstEmpresa.Where(p =>
                     p.Razon.IndexOf(texto, StringComparison.OrdinalIgnoreCase) >= 0 ||
                     p.Dni.IndexOf(texto, StringComparison.OrdinalIgnoreCase) >= 0)
@@ -229,7 +228,7 @@ namespace minihito
 
         private void btnModificarEmpresa_click(Object sender, RoutedEventArgs e)
         {
-            
+
             Empresa empresa = (Empresa)dgvEmpresa.SelectedItem;
             empresa.Razon = razontxt.Text;
             empresa.Dni = dnitxt.Text;
@@ -242,10 +241,10 @@ namespace minihito
         }
         private void dgvEmpresa_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+
             if (dgvEmpresa.SelectedItem is Empresa seleccionada)
             {
-           
+
                 razontxt.Text = seleccionada.Razon;
                 dnitxt.Text = seleccionada.Dni;
                 descripciontxt.Text = seleccionada.Descripcion;
@@ -255,29 +254,29 @@ namespace minihito
         }
         private void CargarDatos()
         {
-            
+
             Alumnado alumno = new Alumnado();
             lstAlumnosNoAsignados = alumno.pm.LeerAlumnosSinGrupo();
             ListUnassigned.ItemsSource = lstAlumnosNoAsignados;
             ListUnassigned.DisplayMemberPath = "NombreCompleto";
 
-            
+
             lstAlumnosSeleccionados = new List<Alumnado>();
             ListSelected.ItemsSource = lstAlumnosSeleccionados;
             ListSelected.DisplayMemberPath = "NombreCompleto";
 
-           
+
             Grupo grupo = new Grupo();
             lstGrupos = grupo.getGrupos();
             ListGroupMembers.ItemsSource = lstGrupos;
             ListGroupMembers.DisplayMemberPath = "Nombre";
 
-            
+
             GroupNameTextBox.Text = "";
             grupoSeleccionado = null;
         }
 
-        
+
         private void ListGroupMembers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ListGroupMembers.SelectedItem != null)
@@ -287,7 +286,7 @@ namespace minihito
             }
         }
 
-        
+
         private void BtnMoverDerecha_Click(object sender, RoutedEventArgs e)
         {
             if (ListUnassigned.SelectedItems.Count > 0)
@@ -313,7 +312,7 @@ namespace minihito
             }
         }
 
-        
+
         private void BtnMoverIzquierda_Click(object sender, RoutedEventArgs e)
         {
             if (ListSelected.SelectedItems.Count > 0)
@@ -339,7 +338,7 @@ namespace minihito
             }
         }
 
-   
+
         private void BtnAñadirModificar_Click(object sender, RoutedEventArgs e)
         {
             string nombreGrupo = GroupNameTextBox.Text.Trim();
@@ -362,19 +361,19 @@ namespace minihito
 
                 if (grupoSeleccionado == null)
                 {
-                
+
                     Grupo nuevoGrupo = new Grupo(nombreGrupo);
                     nuevoGrupo.insertar();
                     idGrupoActual = nuevoGrupo.pm.ObtenerUltimoId();
                 }
                 else
                 {
-                  
+
                     grupoSeleccionado.Nombre = nombreGrupo;
                     grupoSeleccionado.modificar();
                     idGrupoActual = grupoSeleccionado.Id;
 
-                    
+
                     Alumnado alumnoTemp = new Alumnado();
                     List<Alumnado> alumnosAntiguos = alumnoTemp.pm.LeerAlumnosPorGrupo(idGrupoActual);
                     foreach (Alumnado a in alumnosAntiguos)
@@ -383,7 +382,7 @@ namespace minihito
                     }
                 }
 
-                
+
                 foreach (Alumnado alumno in lstAlumnosSeleccionados)
                 {
                     alumno.asignarGrupo(idGrupoActual);
@@ -392,7 +391,7 @@ namespace minihito
                 MessageBox.Show($"Grupo '{nombreGrupo}' guardado correctamente con {lstAlumnosSeleccionados.Count} alumno(s)",
                                "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                
+
                 CargarDatos();
             }
             catch (Exception ex)
@@ -401,7 +400,7 @@ namespace minihito
             }
         }
 
-        
+
         private void BtnEliminar_Click(object sender, RoutedEventArgs e)
         {
             if (grupoSeleccionado == null)
@@ -437,11 +436,11 @@ namespace minihito
             grupoSeleccionado = grupo;
             GroupNameTextBox.Text = grupo.Nombre;
 
-           
+
             lstAlumnosSeleccionados.Clear();
             lstAlumnosNoAsignados.Clear();
 
-           
+
             Alumnado alumno = new Alumnado();
             lstAlumnosSeleccionados = alumno.pm.LeerAlumnosPorGrupo(grupo.Id);
             ListSelected.ItemsSource = lstAlumnosSeleccionados;
@@ -453,18 +452,18 @@ namespace minihito
         }
         private void NavParticipantes_Click(object sender, RoutedEventArgs e)
         {
-          
+
             MainTabControl.SelectedIndex = 0;
         }
 
         private void NavGrupos_Click(object sender, RoutedEventArgs e)
         {
-           
+
             MainTabControl.SelectedIndex = 1;
         }
         private void NavEmpresas_Click(object sender, RoutedEventArgs e)
         {
-          
+
             MainTabControl.SelectedIndex = 2;
         }
         private void NavTalent_Lab_Click(object sender, RoutedEventArgs e)
@@ -476,7 +475,7 @@ namespace minihito
             MainTabControl.SelectedIndex = 3;
         }
 
-        
+
         private void NavInformes_Click(object sender, RoutedEventArgs e)
         {
             MainTabControl.SelectedIndex = 5;
@@ -495,13 +494,13 @@ namespace minihito
         {
             if (dgvRetos.SelectedItem is Reto seleccionado)
             {
-                
+
                 seleccionado.Descripcion_reto = descRetotxt.Text;
 
-              
+
                 seleccionado.modificar();
 
-                
+
                 CargarDatosRetos();
 
                 MessageBox.Show("Reto modificado con éxito");
@@ -524,7 +523,7 @@ namespace minihito
 
             if (!string.IsNullOrEmpty(texto))
             {
-                
+
                 var listaFiltrada = lstReto.Where(r =>
                     r.Descripcion_reto != null &&
                     r.Descripcion_reto.IndexOf(texto, StringComparison.OrdinalIgnoreCase) >= 0)
@@ -564,8 +563,8 @@ namespace minihito
                 }
 
                 t.Reto1 = r1.Id_Reto;
-                t.Empresa = emp.Id; 
-                t.Grupo = grp.Id;   
+                t.Empresa = emp.Id;
+                t.Grupo = grp.Id;
 
                 t.Reto2 = (cmbReto2.SelectedItem as Reto)?.Id_Reto;
                 t.Reto3 = (cmbReto3.SelectedItem as Reto)?.Id_Reto;
@@ -600,7 +599,7 @@ namespace minihito
         {
             if (dgvTalent.SelectedItem is TalentLab t)
             {
-                
+
                 if (cmbReto1.SelectedItem == null || cmbTalentEmpresa.SelectedItem == null || cmbTalentGrupo.SelectedItem == null)
                 {
                     MessageBox.Show("Por favor, asegúrate de que el Reto 1, la Empresa y el Grupo estén seleccionados.");
@@ -610,16 +609,16 @@ namespace minihito
                 t.Titulo_descriptivo = txtTalentTitulo.Text;
                 t.Descripcion = txtTalentDesc.Text;
 
-                
+
                 t.Reto1 = ((Reto)cmbReto1.SelectedItem).Id_Reto;
                 t.Empresa = ((Empresa)cmbTalentEmpresa.SelectedItem).Id;
                 t.Grupo = ((Grupo)cmbTalentGrupo.SelectedItem).Id;
 
-                
+
                 t.Reto2 = (cmbReto2.SelectedItem as Reto)?.Id_Reto;
                 t.Reto3 = (cmbReto3.SelectedItem as Reto)?.Id_Reto;
 
-                
+
                 t.Coste = double.TryParse(txtTalentCoste.Text, out double c) ? c : 0;
 
                 t.modificar();
@@ -643,27 +642,26 @@ namespace minihito
         {
             try
             {
-              
                 string query = "SELECT titulo_descriptivo, descripcion, coste FROM aceptasreto.talent_lab";
-
-               
                 DataTable tablaDatos = DBBroker.obtenerAgente().leerDataTable(query);
+                tablaDatos.TableName = "DataTable1";
 
-                
-                tablaDatos.TableName = "Tabla";
-
-             
-                CrystalReport1 report = new CrystalReport1();
-
-               
+                TalentReport report = new TalentReport();
                 report.SetDataSource(tablaDatos);
-
 
                 visor.ViewerCore.ReportSource = report;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar datos con DBBroker: " + ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        private void MainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Si el usuario hace clic en la pestaña de INFORMES (índice 5)
+            if (MainTabControl.SelectedIndex == 5)
+            {
+                CargarInformeDesdeMySQL();
             }
         }
 

@@ -112,6 +112,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="crystalreport\TalentReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TalentReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="persistence\DBBroker.cs" />
     <Compile Include="view\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -119,15 +125,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="crystalreport\CrystalReport1.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="crystalreport\CrystalReport11.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport1.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="crystalreport\DataSet1.cs">
       <DependentUpon>DataSet1.xsd</DependentUpon>
@@ -176,9 +173,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="crystalreport\CrystalReport1.rpt">
+    <EmbeddedResource Include="crystalreport\TalentReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport11.cs</LastGenOutput>
+      <LastGenOutput>TalentReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

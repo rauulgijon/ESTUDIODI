@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TablaGimnasio" targetNamespace="http://tempuri.org/TablaGimnasio.xsd" xmlns:mstns="http://tempuri.org/TablaGimnasio.xsd" xmlns="http://tempuri.org/TablaGimnasio.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="TablaGimnasio" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="TablaGimnasio" msprop:Generator_DataSetName="TablaGimnasio">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Tabla" msprop:Generator_RowEvHandlerName="TablaRowChangeEventHandler" msprop:Generator_RowDeletedName="TablaRowDeleted" msprop:Generator_RowDeletingName="TablaRowDeleting" msprop:Generator_RowEvArgName="TablaRowChangeEvent" msprop:Generator_TablePropName="Tabla" msprop:Generator_RowChangedName="TablaRowChanged" msprop:Generator_RowChangingName="TablaRowChanging" msprop:Generator_TableClassName="TablaDataTable" msprop:Generator_RowClassName="TablaRow" msprop:Generator_TableVarName="tableTabla" msprop:Generator_UserTableName="Tabla">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_UserColumnName="nombre" type="xs:string" minOccurs="0" />
+              <xs:element name="dni" msprop:Generator_ColumnPropNameInRow="dni" msprop:Generator_ColumnPropNameInTable="dniColumn" msprop:Generator_ColumnVarNameInTable="columndni" msprop:Generator_UserColumnName="dni" type="xs:string" minOccurs="0" />
+              <xs:element name="cuotaBase" msprop:Generator_ColumnPropNameInRow="cuotaBase" msprop:Generator_ColumnPropNameInTable="cuotaBaseColumn" msprop:Generator_ColumnVarNameInTable="columncuotaBase" msprop:Generator_UserColumnName="cuotaBase" type="xs:double" minOccurs="0" />
+              <xs:element name="fecha" msprop:Generator_ColumnPropNameInRow="fecha" msprop:Generator_ColumnPropNameInTable="fechaColumn" msprop:Generator_ColumnVarNameInTable="columnfecha" msprop:Generator_UserColumnName="fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="nombreClase" msprop:Generator_ColumnPropNameInRow="nombreClase" msprop:Generator_ColumnPropNameInTable="nombreClaseColumn" msprop:Generator_ColumnVarNameInTable="columnnombreClase" msprop:Generator_UserColumnName="nombreClase" type="xs:string" minOccurs="0" />
+              <xs:element name="coste" msprop:Generator_ColumnPropNameInRow="coste" msprop:Generator_ColumnPropNameInTable="costeColumn" msprop:Generator_ColumnVarNameInTable="columncoste" msprop:Generator_UserColumnName="coste" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
