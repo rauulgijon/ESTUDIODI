@@ -28,7 +28,7 @@
                     </Grid.RowDefinitions>
 
                     <Label Grid.Row="0" Grid.Column="0" FontSize="16" FontWeight="Bold">Socios</Label>
-                    <DataGrid Grid.RowSpan="3" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Margin="5" x:Name="dgGuests" AutoGenerateColumns="False" SelectionChanged="dgSocios_SelectionChanged">
+                    <DataGrid Grid.RowSpan="3" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Margin="5" x:Name="dgSocios" AutoGenerateColumns="False" SelectionChanged="dgSocios_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding IdSocio}" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*"/>
@@ -39,7 +39,7 @@
                     </DataGrid>
 
                     <Label Grid.Row="0" Grid.Column="2" FontSize="16" FontWeight="Bold">Clases Extra</Label>
-                    <DataGrid Grid.RowSpan="3" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="2" Margin="5" x:Name="dgParcels" AutoGenerateColumns="False" SelectionChanged="dgClases_SelectionChanged">
+                    <DataGrid Grid.RowSpan="3" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="2" Margin="5" x:Name="dgClasesExtra" AutoGenerateColumns="False" SelectionChanged="dgClases_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id Clase" Binding="{Binding IdClase}" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Id Socio" Binding="{Binding IdSocio}" Width="*"/>

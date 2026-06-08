@@ -31,9 +31,6 @@ namespace IronFit.domain
             pm = new SocioPersistence();
         }
 
-        // ==========================================
-        // MÉTODOS ACTIVE RECORD
-        // ==========================================
         public void insertar()
         {
             pm.insertarSocio(this);

@@ -34,9 +34,6 @@ namespace IronFit.domain
             pm = new ClaseExtraPersistence();
         }
 
-        // ==========================================
-        // MÉTODOS ACTIVE RECORD
-        // ==========================================
         public void insertar()
         {
             pm.insertarClaseExtra(this);

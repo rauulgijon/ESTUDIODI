@@ -1,6 +1,5 @@
-﻿using Estudio1.persistence;
+﻿using IronFit.persistence;
 using IronFit.domain;
-using IronFit.persistence;
 using System;
 using System.Data;
 using System.Windows;
@@ -23,12 +22,12 @@ namespace IronFit
 
         private void RecargarSocios()
         {
-            dgGuests.ItemsSource = Socio.leerTodos();
+            dgSocios.ItemsSource = Socio.leerTodos();
         }
 
         private void RecargarClases()
         {
-            dgParcels.ItemsSource = ClaseExtra.leerTodas();
+            dgClasesExtra.ItemsSource = ClaseExtra.leerTodas();
         }
 
         // =======================================================
@@ -36,9 +35,9 @@ namespace IronFit
         // =======================================================
         private void dgSocios_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (dgGuests.SelectedItem != null)
+            if (dgSocios.SelectedItem != null)
             {
-                Socio seleccionado = (Socio)dgGuests.SelectedItem;
+                Socio seleccionado = (Socio)dgSocios.SelectedItem;
                 txtIdSocio.Text = seleccionado.IdSocio.ToString();
                 txtNombre.Text = seleccionado.Nombre;
                 txtDni.Text = seleccionado.Dni;
@@ -48,9 +47,9 @@ namespace IronFit
 
         private void dgClases_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (dgParcels.SelectedItem != null)
+            if (dgClasesExtra.SelectedItem != null)
             {
-                ClaseExtra seleccionada = (ClaseExtra)dgParcels.SelectedItem;
+                ClaseExtra seleccionada = (ClaseExtra)dgClasesExtra.SelectedItem;
                 txtIdClase.Text = seleccionada.IdClase.ToString();
                 txtIdSocioClase.Text = seleccionada.IdSocio.ToString();
                 DatePickerFecha.SelectedDate = seleccionada.Fecha;
@@ -141,7 +140,7 @@ namespace IronFit
             txtNombre.Text = "";
             txtDni.Text = "";
             txtCuotaMensual.Text = "";
-            dgGuests.SelectedItem = null;
+            dgSocios.SelectedItem = null;
         }
 
         // =======================================================
@@ -230,7 +229,7 @@ namespace IronFit
             DatePickerFecha.SelectedDate = null;
             txtNombreClase.Text = "";
             txtCoste.Text = "";
-            dgParcels.SelectedItem = null;
+            dgClasesExtra.SelectedItem = null;
         }
 
         // =======================================================

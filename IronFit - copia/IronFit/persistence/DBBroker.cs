@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Estudio1.persistence
+namespace IronFit.persistence
 {
     public class DBBroker
     {
